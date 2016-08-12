@@ -4,6 +4,7 @@
 
 //Initialize variables
 function initialize() {
+	wordBeingPlayed = "";
 	var opponentChoice;
 	var playerWins = 0;
 	var playerLosses = 0;
@@ -18,27 +19,45 @@ function initialize() {
 	for (i = 0; i < currentWord.length; i++) {
 		j = i;
 		while (j == 0) {
-			document.getElementById("wordstatus").innerHTML	= "";
+			wordBeingPlayed = "";
 			j++;
 		}
-		console.log(currentWord[i]);
-		document.getElementById("wordstatus").innerHTML	+= "_ ";
+		if (currentWord[i] == " ") {
+			wordBeingPlayed += " ";	
+		}
+		wordBeingPlayed += "_";
 	}
 
+	document.getElementById("wordstatus").innerHTML	= wordBeingPlayed;
 }
 
 // 	Capture user guess
 document.onkeydown = function(event) {
+	tempWordBeingPlayed = "";
 	//Force lowercase
 	letterPlayed = String.fromCharCode(event.keyCode).toLowerCase();
-	console.log(letterPlayed);
-	console.log(currentWord);
 	// Compare against word
 	for (k = 0; k < currentWord.length; k++) {
 		// console.log("Word is " + currentWord + " letterPlayed is " + letterPlayed + " currentWord is " + currentWord);
 		if (letterPlayed == currentWord[k]) {
-			console.log("MATCH!");
+			tempWordBeingPlayed += letterPlayed;
+			console.log("Match! tempWordBeingPlayed is " + tempWordBeingPlayed);
 		}
+		 else if (wordBeingPlayed[k] != "_") {
+			tempWordBeingPlayed += wordBeingPlayed[k];
+			console.log("Already selected! tempWordBeingPlayed is " + tempWordBeingPlayed);
+		} else {
+			tempWordBeingPlayed += "_";
+			console.log("Blank space! tempWordBeingPlayed is " + tempWordBeingPlayed);
+		}
+
+		document.getElementById("wordstatus").innerHTML	= tempWordBeingPlayed;
+			//check if current letter in currentWord is already answered
+				//add letter to variable
+			//check if current letter matches the letter selected
+				//add letter to variable
+			//write completed word to DOM
+			// document.getElementById("wordstatus").innerHTML	+= "_ ";
 	}
 
 	// 		Insert that letter where ever it occurs
