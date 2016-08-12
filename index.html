@@ -6,6 +6,10 @@
 	<link rel="stylesheet" type="text/css" href="https://bootswatch.com/slate/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/styles.css">
 	<script type="text/javascript" src="assets/javascript/scripts.js"></script>
+
+	<script type="text/javascript">
+		window.onload = initialize;
+	</script>
 </head>
 <body>
 
@@ -63,7 +67,7 @@
 						<div class="panel panel-default">
 						  <div class="panel-heading"><h3>Letters Guessed</h3></div>
 						  <div class="panel-body">
-						  	<div id="wordstatus">
+						  	<div id="usedletters">
 						  		These are the letters that have been guessed
 						  	</div>
 						  </div>
@@ -73,7 +77,7 @@
 						  <div class="panel-heading"><h3>Games played</h3></div>
 						  <div class="panel-body">
 
-						  	<div id="wordstatus">
+						  	<div id="scoreboard">
 						  		<p>Player wins:</p>
 								<p>Player Losses:</p>
 							</div>

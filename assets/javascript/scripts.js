@@ -1,10 +1,57 @@
-document.onkeydown = function(event) {
-	// tomTesting();
+// 	To do
+// 	Choose difficulty (easy/hard)
+// 	
+
+//Initialize variables
+function initialize() {
+	var opponentChoice;
+	var playerWins = 0;
+	var playerLosses = 0;
+	var choiceArray = ["archery","athletics","badminton","baseball","basketball","basque pelota","boxing","canoeing","cricket","croquet","cycling","diving","equestrian","fencing","field hockey","football","golf","gymnastics","handball","jeu de paume","judo","kayaking","lacrosse","pentathlon","polo","racquets","rhythmic gymnastics","roque","rowing","rugby","sailing","shooting","softball","swimming","synchronized swimming","table tennis","taekwondo","tennis","trampoline","triathlon","tug of war","volleyball","water motorsports","water polo","weightlifting","wrestling"];
+
+	// 	Randomly select word for game from array
+	randomNumber = Math.floor(Math.random() * choiceArray.length);
+	currentWord = choiceArray[randomNumber];
+	console.log(currentWord);
+
+	// Display underscores indicating word length
+	for (i = 0; i < currentWord.length; i++) {
+		j = i;
+		while (j == 0) {
+			document.getElementById("wordstatus").innerHTML	= "";
+			j++;
+		}
+		console.log(currentWord[i]);
+		document.getElementById("wordstatus").innerHTML	+= "_ ";
+	}
+
 }
 
-function tomTesting() {
-	alert('Hello world');
+// 	Capture user guess
+document.onkeydown = function(event) {
+	//Force lowercase
+	letterPlayed = String.fromCharCode(event.keyCode).toLowerCase();
+	console.log(letterPlayed);
+	console.log(currentWord);
+	// Compare against word
+	for (k = 0; k < currentWord.length; k++) {
+		// console.log("Word is " + currentWord + " letterPlayed is " + letterPlayed + " currentWord is " + currentWord);
+		if (letterPlayed == currentWord[k]) {
+			console.log("MATCH!");
+		}
+	}
+
+	// 		Insert that letter where ever it occurs
+	// 			Did that complete the word? If so, WIN!
+	// 			Did that lose the game? If so, LOSE!
+	// 		Display letter in "already used" bin
+	
 }
+
+
+
+
+
 //Choose between dark and traditional theme
 function setTheme(themeSelected) {
 	if (themeSelected == "theme1") {
@@ -21,8 +68,7 @@ function setTheme(themeSelected) {
 		
 		//Display difficulty options #difficulty
 		document.getElementById('difficulty').style.display = "inline-block";
-	}
-	if (themeSelected == "theme2") {
+	} else if (themeSelected == "theme2") {
 		//add active class to theme2 & remove active from theme1
 		document.getElementById("traditional").className = "";
 		document.getElementById("dark").className = "active";
@@ -34,38 +80,16 @@ function setTheme(themeSelected) {
 		var imageNumber = imageValue[imageValue.length-5];
 		document.getElementById("imagedisplayed").src="assets/images/dark/0.png";
 
-
-
-
 		//hide difficulty options #difficulty
 		document.getElementById('difficulty').style.display = "none";
 	}
 	// document.querySelector('#scoreboard').innerHTML = "Player wins: " + playerWins + "<Br><Br>CPU Wins: " +  "<Br><Br>Ties: ";
 }
 
-// 	Pseudocode
-
-// 	Choose theme (traditional/dark)
-// 	Choose difficulty (easy/hard)
-// 	Randomly select word for game from array
-// 	Display underscores indicating word length
-// 	Capture user guess
-// 		Force lowercase
-// 		Compare against word
-// 		Insert that letter where ever it occurs
-// 			Did that complete the word? If so, WIN!
-// 			Did that lose the game? If so, LOSE!
-// 		Display letter in "already used" bin
-
-// 	
 
 
 
-// 	var opponentChoice;
 
-// 	var playerWins = 0;
-// 	var playerLosses = 0;
-// 	var choiceArray = ["Archery","Athletics","Badminton","Baseball","Basketball","Basque pelota","Boxing","Canoeing","Cricket","Croquet","Cycling","Diving","Equestrian","Fencing","Field hockey","Football","Golf","Gymnastics","Handball","Jeu de paume","Judo","Kayaking","Lacrosse","list.txt","Pentathlon","Polo","Racquets","Rhythmic gymnastics","Roque","Rowing","Rugby","Sailing","Shooting","Softball","Swimming","Synchronized swimming","Table tennis","Taekwondo","Tennis","Trampoline","Triathlon","Tug of war","Volleyball","Water motorsports","Water polo","Weightlifting","Wrestling"];
 
 // 	// Captures Key Clicks
 // 	document.onkeydown = function(event) {
