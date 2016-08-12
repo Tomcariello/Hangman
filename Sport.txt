@@ -1,0 +1,50 @@
+Archery
+Athletics
+Badminton
+Baseball
+Basketball
+Basque pelota
+Boxing
+Canoeing
+Cricket
+Croquet
+Cycling
+Diving
+Equestrian
+Fencing
+Field hockey
+Football
+Golf
+Gymnastics
+Handball
+Jeu de paume
+Judo
+Kayaking
+Lacrosse
+list.txt
+Pentathlon
+Polo
+Racquets
+Rhythmic gymnastics
+Roque
+Rowing
+Rugby
+Sailing
+Shooting
+Softball
+Swimming
+Synchronized swimming
+Table tennis
+Taekwondo
+Tennis
+Trampoline
+Triathlon
+Tug of war
+Volleyball
+Water motorsports
+Water polo
+Weightlifting
+Wrestling
+
+
+"Archery","Athletics","Badminton","Baseball","Basketball","Basque pelota","Boxing","Canoeing","Cricket","Croquet","Cycling","Diving","Equestrian","Fencing","Field hockey","Football","Golf","Gymnastics","Handball","Jeu de paume","Judo","Kayaking","Lacrosse","list.txt","Pentathlon","Polo","Racquets","Rhythmic gymnastics","Roque","Rowing","Rugby","Sailing","Shooting","Softball","Swimming","Synchronized swimming","Table tennis","Taekwondo","Tennis","Trampoline","Triathlon","Tug of war","Volleyball","Water motorsports","Water polo","Weightlifting","Wrestling"

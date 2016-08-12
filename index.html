@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Hangman</title>
+	<link rel="stylesheet" type="text/css" href="https://bootswatch.com/slate/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/styles.css">
+	<script type="text/javascript" src="assets/javascript/scripts.js"></script>
+</head>
+<body>
+
+<div class="container">
+
+	<row>
+		<div class="col-lg-5">
+			<div class="theme">
+				<h3>Select your theme</h3>
+
+				<ul class="nav nav-pills">
+				  <li role="presentation" id="traditional" class="active"><a href="#" onClick=setTheme("theme1");>Traditional</a></li>
+				  <li role="presentation" id="dark" ><a href="#" onClick=setTheme("theme2");>Dark</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-lg-5">
+			<div id="difficulty">
+				<h3>Select your difficulty</h3>
+				<ul class="nav nav-pills">
+				  <li role="presentation" class="active"><a href="#">Easy</a></li>
+				  <li role="presentation"><a href="#">Hard</a></li>
+				</ul>
+			</div>
+		</div>
+	</row>
+
+	<!-- <div class="clearfix"></div> -->
+	<row>
+		<div class="col-sm-12">
+			<hr>
+		</div>
+	</row>
+
+	<row>
+		<div class="col-lg-4 leftwindow">
+			<div>
+				<div id="board">
+					<img src="assets/images/traditionaleasy/0.png" id="imagedisplayed">
+				</div>
+			</div>
+		</div>	
+			<div class="col-lg-8 rightwindow">
+				<row>
+					<div class="col-xs-12">
+						<div class="panel panel-default">
+						  <div class="panel-heading"><h3>Guess the word?</h3></div>
+						  <div class="panel-body">
+						  	<div id="wordstatus">
+						  		Display underscores indicating word length
+						  	</div>
+						  </div>
+						</div>
+
+						<div class="panel panel-default">
+						  <div class="panel-heading"><h3>Letters Guessed</h3></div>
+						  <div class="panel-body">
+						  	<div id="wordstatus">
+						  		These are the letters that have been guessed
+						  	</div>
+						  </div>
+						</div>
+
+						<div class="panel panel-default">
+						  <div class="panel-heading"><h3>Games played</h3></div>
+						  <div class="panel-body">
+
+						  	<div id="wordstatus">
+						  		<p>Player wins:</p>
+								<p>Player Losses:</p>
+							</div>
+						  </div>
+						</div>
+					</div>
+				</row>
+			</div>
+		</div>
+	</row>
+
+	<row>
+		<div class="col-xs-12 funfacts">
+			<div class="panel panel-default">
+			  <div class="panel-heading">Fun Facts</div>
+			  <div class="panel-body">
+				<p>This is my first javascript project for my bootcamp!</p>
+			</div>
+		</div>
+
+</div>
+
+
+
+
+
+
+
+
+</body>
+</html>

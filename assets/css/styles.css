@@ -1,0 +1,45 @@
+* {
+	/*border: 1px solid black;*/
+}
+
+body {
+	width: 100%;
+	height: 100%;
+}
+
+.theme {
+	
+}
+#difficulty {
+	/*display: none;*/
+}
+.board {
+	margin: 15px;
+
+}
+#scoreboard {
+
+}
+.leftwindow {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	height: 410px;
+	padding: 0px;
+}
+.rightwindow {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	height: 410px;
+	padding: 0px;
+}
+.funfacts {
+	display: none;
+}
+
+.panel-default>.panel-heading {
+    text-align: center;
+}
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
