@@ -5,6 +5,7 @@
 //Initialize variables
 var wordBeingPlayed = "";
 var currentWord;
+var guesses = 0;
 
 
 function initialize() {
@@ -40,6 +41,7 @@ document.onkeydown = function(event) {
 	//currentWord is the actual word
 
 	tempWordBeingPlayed = "";
+	var matchedGuess = false;
 	//Force lowercase
 	letterPlayed = String.fromCharCode(event.keyCode).toLowerCase();
 	// Compare against word
@@ -48,6 +50,7 @@ document.onkeydown = function(event) {
 		if (letterPlayed == currentWord[k]) {
 			tempWordBeingPlayed += letterPlayed;
 			console.log("Match! tempWordBeingPlayed is " + tempWordBeingPlayed);
+			matchedGuess = true;
 		}
 		 else if (wordBeingPlayed[k] != "_") {
 			tempWordBeingPlayed += wordBeingPlayed[k];
@@ -57,22 +60,30 @@ document.onkeydown = function(event) {
 			console.log("Blank space! tempWordBeingPlayed is " + tempWordBeingPlayed);
 		}
 		document.getElementById("wordstatus").innerHTML	= tempWordBeingPlayed;
-			//check if current letter in currentWord is already answered
-				//add letter to variable
-			//check if current letter matches the letter selected
-				//add letter to variable
-			//write completed word to DOM
-			// document.getElementById("wordstatus").innerHTML	+= "_ ";
+
 	}
 	wordBeingPlayed = tempWordBeingPlayed;
-	// 		Insert that letter where ever it occurs
-	// 			Did that complete the word? If so, WIN!
-	// 			Did that lose the game? If so, LOSE!
+
 	// 		Display letter in "already used" bin
+	if (matchedGuess == true) {
+		wordComplete();
+	}
+	
+	if (matchedGuess == false) {
+		guesses++;
+		document.getElementById("usedletters").innerHTML = guesses;
+		loseGame();	
+	}
 	
 }
 
+function wordComplete() {
 
+}
+
+function loseGame() {
+	
+}
 
 
 
