@@ -3,15 +3,18 @@
 // 	
 
 //Initialize variables
+var wordBeingPlayed = "";
+var currentWord;
+
+
 function initialize() {
-	wordBeingPlayed = "";
 	var opponentChoice;
 	var playerWins = 0;
 	var playerLosses = 0;
 	var choiceArray = ["archery","athletics","badminton","baseball","basketball","basque pelota","boxing","canoeing","cricket","croquet","cycling","diving","equestrian","fencing","field hockey","football","golf","gymnastics","handball","jeu de paume","judo","kayaking","lacrosse","pentathlon","polo","racquets","rhythmic gymnastics","roque","rowing","rugby","sailing","shooting","softball","swimming","synchronized swimming","table tennis","taekwondo","tennis","trampoline","triathlon","tug of war","volleyball","water motorsports","water polo","weightlifting","wrestling"];
 
 	// 	Randomly select word for game from array
-	randomNumber = Math.floor(Math.random() * choiceArray.length);
+	var randomNumber = Math.floor(Math.random() * choiceArray.length);
 	currentWord = choiceArray[randomNumber];
 	console.log(currentWord);
 
@@ -33,6 +36,9 @@ function initialize() {
 
 // 	Capture user guess
 document.onkeydown = function(event) {
+	//wordBeingPlayed is the visual given to the player
+	//currentWord is the actual word
+
 	tempWordBeingPlayed = "";
 	//Force lowercase
 	letterPlayed = String.fromCharCode(event.keyCode).toLowerCase();
@@ -50,7 +56,6 @@ document.onkeydown = function(event) {
 			tempWordBeingPlayed += "_";
 			console.log("Blank space! tempWordBeingPlayed is " + tempWordBeingPlayed);
 		}
-
 		document.getElementById("wordstatus").innerHTML	= tempWordBeingPlayed;
 			//check if current letter in currentWord is already answered
 				//add letter to variable
@@ -59,7 +64,7 @@ document.onkeydown = function(event) {
 			//write completed word to DOM
 			// document.getElementById("wordstatus").innerHTML	+= "_ ";
 	}
-
+	wordBeingPlayed = tempWordBeingPlayed;
 	// 		Insert that letter where ever it occurs
 	// 			Did that complete the word? If so, WIN!
 	// 			Did that lose the game? If so, LOSE!
