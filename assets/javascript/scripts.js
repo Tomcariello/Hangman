@@ -10,6 +10,8 @@ var totalMatchedGuesses = 0;
 var lettersGuessed = [];
 var playerWins = 0;
 var playerLosses = 0;
+var theme = "traditional";
+var imageToSet = 1;
 
 
 function initialize() {
@@ -97,26 +99,27 @@ function wordComplete() {
 //update graphic on board
 function updateBoardImage() {
 	//If gametype is traditional && easy
-	if (guesses == 1) {
-		document.getElementById("imagedisplayed").src="assets/images/traditionaleasy/1.png";
-	} else if (guesses == 2) {
-		document.getElementById("imagedisplayed").src="assets/images/traditionaleasy/2.png";
-	} else if (guesses == 3) {
-		document.getElementById("imagedisplayed").src="assets/images/traditionaleasy/3.png";
-	} else if (guesses == 4) {
-		document.getElementById("imagedisplayed").src="assets/images/traditionaleasy/4.png";
-	} else if (guesses == 5) {
-		document.getElementById("imagedisplayed").src="assets/images/traditionaleasy/5.png";
-	} else if (guesses == 6) {
-		document.getElementById("imagedisplayed").src="assets/images/traditionaleasy/6.png";
-	} else if (guesses == 7) {
-		document.getElementById("imagedisplayed").src="assets/images/traditionaleasy/7.png";
-	} else if (guesses == 8) {
-		document.getElementById("imagedisplayed").src="assets/images/traditionaleasy/8.png";
-	} else if (guesses == 9) {
-		document.getElementById("imagedisplayed").src="assets/images/traditionaleasy/9.png";
-		playerLosses++;
-		updateScoreboard("lose");
+	if (theme=="traditional") {
+		var imagePath = "assets/images/traditionaleasy/" + guesses + ".png";
+		if (guesses < 9) {
+			document.getElementById("imagedisplayed").src=imagePath;
+		} else if (guesses == 9) {
+			document.getElementById("imagedisplayed").src="assets/images/traditionaleasy/9.png";
+			playerLosses++;
+			updateScoreboard("lose");
+		}
+	} else if (theme=="dark" && guesses <= 6) {
+		console.log("changing to dark");
+		var imagePath = "assets/images/dark/" + guesses + ".png";
+		if (guesses < 6) {
+			document.getElementById("imagedisplayed").src= imagePath;
+		} else if (guesses == 6) {
+			document.getElementById("imagedisplayed").src="assets/images/dark/6.png";
+			playerLosses++;
+			updateScoreboard("lose");
+		}
+	} else {
+		console.log("can't change theme");
 	}
 }
 
@@ -146,6 +149,8 @@ function printLetters() {
 //Choose between dark and traditional theme
 function setTheme(themeSelected) {
 	if (themeSelected == "theme1") {
+		theme = "traditional";
+
 		//add active class to theme1 & remove active from theme2
 		document.getElementById("traditional").className = "active";
 		document.getElementById("dark").className = "";
@@ -154,12 +159,14 @@ function setTheme(themeSelected) {
 		var imageValue = document.getElementById("imagedisplayed").src;
 		
 		//Isolate the current image number
-		var imageNumber = imageValue[imageValue.length-5];
-		document.getElementById("imagedisplayed").src="assets/images/traditionaleasy/0.png";
+		// var imageNumber = imageValue[imageValue.length-5];
+		var imageToSet = "assets/images/traditionaleasy/" + (guesses)  + ".png"
+		document.getElementById("imagedisplayed").src=imageToSet;
 		
 		//Display difficulty options #difficulty
-		document.getElementById('difficulty').style.display = "inline-block";
+		// document.getElementById('difficulty').style.display = "inline-block";
 	} else if (themeSelected == "theme2") {
+		theme = "dark";
 		//add active class to theme2 & remove active from theme1
 		document.getElementById("traditional").className = "";
 		document.getElementById("dark").className = "active";
@@ -168,8 +175,9 @@ function setTheme(themeSelected) {
 		var imageValue = document.getElementById("imagedisplayed").src;
 		
 		//Isolate the current image number
-		var imageNumber = imageValue[imageValue.length-5];
-		document.getElementById("imagedisplayed").src="assets/images/dark/0.png";
+		// var imageNumber = imageValue[imageValue.length-5];
+		var imageToSet = "assets/images/dark/" + (guesses)  + ".png"
+		document.getElementById("imagedisplayed").src=imageToSet;
 
 		//hide difficulty options #difficulty
 		document.getElementById('difficulty').style.display = "none";
@@ -179,32 +187,3 @@ function setTheme(themeSelected) {
 
 
 
-
-
-
-// 	// Captures Key Clicks
-// 	document.onkeydown = function(event) {
-
-// 		// Determines which exact key was selected. Make it lowercase
-// 		opponentChoice = String.fromCharCode(event.keyCode).toLowerCase();
-		
-// 		console.log(opponentChoice);
-
-
-// 		//randomly select choice for computer
-// 		var computerChoice = ["rock", "paper", "scissors"];
-// 		randomNumber = Math.floor(Math.random() * 3);
-// 		computerPlay = computerChoice[randomNumber];
-// 		console.log("Computer throws " + computerPlay);
-
-// 		//compare selections:
-// 		if (opponentChoice == computerPlay) {
-// 			document.querySelector('#scoreboard').innerHTML = "It's a draw!<Br><Br>";
-// 		} else if (opponentChoice == "rock" && computerPlay == "scissors") {
-// 			document.querySelector('#scoreboard').innerHTML = "You throw rock and the CPU throws scissors...You win!<Br><Br>";
-// 			playerWins++;
-// 		} 
-
-// 		//Scoreboard
-// 		document.querySelector('#scoreboard').innerHTML = "Player wins: " + playerWins + "<Br><Br>CPU Wins: " +  "<Br><Br>Ties: ";
-// 	}

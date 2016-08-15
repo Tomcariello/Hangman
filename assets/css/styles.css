@@ -11,7 +11,7 @@ body {
 	
 }
 #difficulty {
-	/*display: none;*/
+	display: none;
 }
 .board {
 	margin: 15px;
