@@ -1,7 +1,3 @@
-// 	To do
-// 	Choose difficulty (easy/hard)
-// 	
-
 //Initialize variables
 var wordBeingPlayed = "";
 var currentWord;
@@ -11,18 +7,21 @@ var lettersGuessed = [];
 var playerWins = 0;
 var playerLosses = 0;
 var theme = "traditional";
+var difficultySetting = "easy";
 var imageToSet = 1;
 var alphabet = ["a","b","c","d","e","f","g","h','i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+var opponentChoice;
+var choiceArray = ["archery","athletics","badminton","baseball","basketball","basque pelota","boxing","canoeing","cricket","croquet","cycling","diving","equestrian","fencing","field hockey","football","golf","gymnastics","handball","judo","kayaking","lacrosse","pentathlon","polo","racquets","rhythmic gymnastics","roque","rowing","rugby","sailing","shooting","softball","swimming","synchronized swimming","table tennis","taekwondo","tennis","trampoline","triathlon","tug of war","volleyball","water motorsports","water polo","weightlifting","wrestling"];
 
 
 function initialize() {
-	var opponentChoice;
-	var choiceArray = ["archery","athletics","badminton","baseball","basketball","basque pelota","boxing","canoeing","cricket","croquet","cycling","diving","equestrian","fencing","field hockey","football","golf","gymnastics","handball","jeu de paume","judo","kayaking","lacrosse","pentathlon","polo","racquets","rhythmic gymnastics","roque","rowing","rugby","sailing","shooting","softball","swimming","synchronized swimming","table tennis","taekwondo","tennis","trampoline","triathlon","tug of war","volleyball","water motorsports","water polo","weightlifting","wrestling"];
 
 	// 	Randomly select word for game from array
 	var randomNumber = Math.floor(Math.random() * choiceArray.length);
 	currentWord = choiceArray[randomNumber];
 	console.log(currentWord);
+	guesses = 0;
+	lettersGuessed = [];
 
 	// Display underscores indicating word length
 	for (i = 0; i < currentWord.length; i++) {
@@ -40,8 +39,16 @@ function initialize() {
 	document.getElementById("wordstatus").innerHTML	= wordBeingPlayed;
 }
 
+
+function newGame() {
+	initialize();
+	clearLetters();
+	updateBoardImage();
+}
+
+
 // 	Capture user guess
-document.onkeydown = function(event) {
+document.onkeypress = function(event) {
 	//wordBeingPlayed is the visual given to the player
 	//currentWord is the actual word
 
@@ -72,6 +79,7 @@ document.onkeydown = function(event) {
 
 	// 		Display letter in "already used" bin
 	if (matchedGuess == true) {
+		lettersGuessed.push(letterPlayed);
 		printLetters();
 		updateBoardImage();
 		wordComplete();
@@ -85,25 +93,17 @@ document.onkeydown = function(event) {
 }
 
 
-
-
-
-
-
-
 function checkValidSelection(letter) {
-	//check letter was a-z
+	//check if letter already guessed
+	for (j=0; j <lettersGuessed.length; j++) {
+		if (letter == lettersGuessed[j]) {
+			return;
+		} 
+	}
+
+	//check letter is a-z
 	for (i=0; i < alphabet.length; i++) {
 		if (letter == alphabet[i]) {
-			// console.log("in alphabet. letter is " + letter);
-			//check if letter was already selected
-			for (j=0; j <lettersGuessed.length; j++) {
-				if (letter == lettersGuessed[j]) {
-					// console.log("already guessed");
-					return;
-				} 
-			}
-			// console.log("one less guess");
 			guesses++;
 			lettersGuessed.push(letter);
 		}
@@ -113,17 +113,9 @@ function checkValidSelection(letter) {
 }
 
 
-
-
-
-
-
-
-
 function wordComplete() {
 	for (i=0; i < wordBeingPlayed.length; i++) {
 		if (wordBeingPlayed[i] == "_") {
-			console.log(wordBeingPlayed[i]);
 			return;
 		} 
 	}
@@ -154,8 +146,6 @@ function updateBoardImage() {
 			playerLosses++;
 			updateScoreboard("lose");
 		}
-	} else {
-		console.log("can't change theme");
 	}
 }
 
@@ -179,14 +169,18 @@ function printLetters() {
 	}
 }
 
+function clearLetters() {
+	document.getElementById("usedletters").innerHTML = "These are the letters that have been guessed" ;
+}
+
 
 
 //Choose between dark and traditional theme
 function setTheme(themeSelected) {
-	if (themeSelected == "theme1") {
+	if (themeSelected == "theme1" && difficultySetting == "easy") {
 		theme = "traditional";
 
-		//add active class to theme1 & remove active from theme2
+		//aupdate pills
 		document.getElementById("traditional").className = "active";
 		document.getElementById("dark").className = "";
 
@@ -199,10 +193,40 @@ function setTheme(themeSelected) {
 		document.getElementById("imagedisplayed").src=imageToSet;
 		
 		//Display difficulty options #difficulty
-		// document.getElementById('difficulty').style.display = "inline-block";
+		document.getElementById('difficulty').style.display = "inline-block";
+
+
+
+	} else 	if (themeSelected == "theme1" && difficultySetting == "hard") {
+		theme = "traditional";
+
+		//aupdate pills
+		document.getElementById("traditional").className = "active";
+		document.getElementById("dark").className = "";
+
+		//change graphic to traditional theme
+		var imageValue = document.getElementById("imagedisplayed").src;
+		
+		//Isolate the current image number
+		// var imageNumber = imageValue[imageValue.length-5];
+		var imageToSet = "assets/images/traditionalhard/" + (guesses)  + ".png"
+		document.getElementById("imagedisplayed").src=imageToSet;
+		
+		//Display difficulty options #difficulty
+		document.getElementById('difficulty').style.display = "inline-block";
+
+
+
+
 	} else if (themeSelected == "theme2") {
+		if (guesses >= 6) {
+			alert("You cannot change the theme at this point of the game because you already have 6 missed guesses.");
+			return;
+		}
+
 		theme = "dark";
-		//add active class to theme2 & remove active from theme1
+		
+		//aupdate pills
 		document.getElementById("traditional").className = "";
 		document.getElementById("dark").className = "active";
 
@@ -221,4 +245,24 @@ function setTheme(themeSelected) {
 }
 
 
+function setDifficulty(difficulty) {
+	if (guesses >= 6) {
+		alert("You cannot change the difficulty at this point of the game because you already have 6 missed guesses.");
+		return;
+	}
 
+	if (difficulty == "easy") {
+		difficultySetting = "easy";
+		//aupdate pills
+		document.getElementById("easy").className = "active";
+		document.getElementById("hard").className = "";
+	} else {
+		difficultySetting = "hard";
+		//aupdate pills
+		document.getElementById("easy").className = "";
+		document.getElementById("hard").className = "active";
+	}
+
+	setTheme("theme1");
+
+}

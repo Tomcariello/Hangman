@@ -16,7 +16,14 @@
 <div class="container">
 
 	<row>
-		<div class="col-lg-5">
+			<div class="col-lg-2">
+			<div class="button">
+			<button type="button" class="btn btn-primary"><a href="#" onClick=newGame();>New Game</a></button>
+			</div>
+		</div>
+
+
+		<div class="col-lg-4">
 			<div class="theme">
 				<h3>Select your theme</h3>
 
@@ -26,12 +33,12 @@
 				</ul>
 			</div>
 		</div>
-		<div class="col-lg-5">
+		<div class="col-lg-4">
 			<div id="difficulty">
 				<h3>Select your difficulty</h3>
 				<ul class="nav nav-pills">
-				  <li role="presentation" class="active"><a href="#">Easy</a></li>
-				  <li role="presentation"><a href="#">Hard</a></li>
+				  <li role="presentation" id="easy" class="active"><a href="#" onClick=setDifficulty("easy")>Easy</a></li>
+				  <li role="presentation" id="hard"><a href="#" onClick=setDifficulty("hard")>Hard</a></li>
 				</ul>
 			</div>
 		</div>
