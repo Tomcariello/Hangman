@@ -12,6 +12,7 @@ var playerWins = 0;
 var playerLosses = 0;
 var theme = "traditional";
 var imageToSet = 1;
+var alphabet = ["a","b","c","d","e","f","g","h','i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 
 
 function initialize() {
@@ -77,12 +78,47 @@ document.onkeydown = function(event) {
 	}
 	
 	if (matchedGuess == false) {
-		guesses++;
-		printLetters();
-		updateBoardImage();	
+		checkValidSelection(letterPlayed);
+
 	}
 	
 }
+
+
+
+
+
+
+
+
+function checkValidSelection(letter) {
+	//check letter was a-z
+	for (i=0; i < alphabet.length; i++) {
+		if (letter == alphabet[i]) {
+			// console.log("in alphabet. letter is " + letter);
+			//check if letter was already selected
+			for (j=0; j <lettersGuessed.length; j++) {
+				if (letter == lettersGuessed[j]) {
+					// console.log("already guessed");
+					return;
+				} 
+			}
+			// console.log("one less guess");
+			guesses++;
+			lettersGuessed.push(letter);
+		}
+	}
+	printLetters();
+	updateBoardImage();	
+}
+
+
+
+
+
+
+
+
 
 function wordComplete() {
 	for (i=0; i < wordBeingPlayed.length; i++) {
@@ -134,7 +170,6 @@ function updateScoreboard(gameStatus) {
 }
 
 function printLetters() {
-	lettersGuessed.push(letterPlayed);
 	for (i = 0; i < lettersGuessed.length; i++) {
 		if (i == 0) {
 			document.getElementById("usedletters").innerHTML = lettersGuessed[i];	
