@@ -130,7 +130,7 @@ function wordComplete() {
 //update graphic on board
 function updateBoardImage() {
 	//If gametype is traditional && easy
-	if (theme=="traditional") {
+	if (theme=="traditional" && difficultySetting=="easy") {
 		var imagePath = "assets/images/traditionaleasy/" + guesses + ".png";
 		if (guesses < 9) {
 			document.getElementById("imagedisplayed").src=imagePath;
@@ -139,8 +139,17 @@ function updateBoardImage() {
 			playerLosses++;
 			updateScoreboard("lose");
 		}
+	} else if (theme=="traditional" && difficultySetting=="hard") {
+		var imagePath = "assets/images/traditionalhard/" + guesses + ".png";
+		if (guesses < 6) {
+			document.getElementById("imagedisplayed").src=imagePath;
+		} else if (guesses == 6) {
+			document.getElementById("imagedisplayed").src="assets/images/traditionalhard/6.png";
+			playerLosses++;
+			updateScoreboard("lose");
+		}
 	} else if (theme=="dark" && guesses <= 6) {
-		console.log("changing to dark");
+		// console.log("changing to dark");
 		var imagePath = "assets/images/dark/" + guesses + ".png";
 		if (guesses < 6) {
 			document.getElementById("imagedisplayed").src= imagePath;
@@ -159,7 +168,6 @@ function updateScoreboard(gameStatus) {
 		alert("You lose!");
 		newGame();
 	}
-
 	document.getElementById("scoreboard").innerHTML = "<p>Player wins: " + playerWins + "</p><p>Player Losses:" + playerLosses + "</p>";
 }
 
@@ -169,15 +177,13 @@ function printLetters() {
 			document.getElementById("usedletters").innerHTML = lettersGuessed[i];	
 		} else {
 		document.getElementById("usedletters").innerHTML += ", " + lettersGuessed[i];
-	}
+		}
 	}
 }
 
 function clearLetters() {
 	document.getElementById("usedletters").innerHTML = "These are the letters that have been guessed" ;
 }
-
-
 
 //Choose between dark and traditional theme
 function setTheme(themeSelected) {
@@ -201,10 +207,10 @@ function setTheme(themeSelected) {
 
 
 
-	} else 	if (themeSelected == "theme1" && difficultySetting == "hard") {
+	} else if (themeSelected == "theme1" && difficultySetting == "hard") {
 		theme = "traditional";
 
-		//aupdate pills
+		//update pills
 		document.getElementById("traditional").className = "active";
 		document.getElementById("dark").className = "";
 
@@ -218,9 +224,6 @@ function setTheme(themeSelected) {
 		
 		//Display difficulty options #difficulty
 		document.getElementById('difficulty').style.display = "inline-block";
-
-
-
 
 	} else if (themeSelected == "theme2") {
 		if (guesses >= 6) {
