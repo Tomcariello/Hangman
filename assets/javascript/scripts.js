@@ -20,7 +20,7 @@ function initialize() {
 	var randomNumber = Math.floor(Math.random() * choiceArray.length);
 	currentWord = choiceArray[randomNumber];
 	choiceArray.splice(randomNumber, 1);
-	console.log(currentWord);
+	// console.log(currentWord);
 	guesses = 0;
 	lettersGuessed = [];
 
@@ -190,7 +190,7 @@ function setTheme(themeSelected) {
 	if (themeSelected == "theme1" && difficultySetting == "easy") {
 		theme = "traditional";
 
-		//aupdate pills
+		//Update pills
 		document.getElementById("traditional").className = "active";
 		document.getElementById("dark").className = "";
 
@@ -198,7 +198,6 @@ function setTheme(themeSelected) {
 		var imageValue = document.getElementById("imagedisplayed").src;
 		
 		//Isolate the current image number
-		// var imageNumber = imageValue[imageValue.length-5];
 		var imageToSet = "assets/images/traditionaleasy/" + (guesses)  + ".png"
 		document.getElementById("imagedisplayed").src=imageToSet;
 		

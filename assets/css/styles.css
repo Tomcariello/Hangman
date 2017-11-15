@@ -7,8 +7,8 @@ body {
 	height: 100%;
 }
 
-.theme {
-	
+.new-game > a {
+	color: #ffffff;
 }
 #difficulty {
 	/*display: none;*/
