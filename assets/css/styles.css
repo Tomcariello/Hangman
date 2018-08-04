@@ -1,41 +1,30 @@
-* {
-	/*border: 1px solid black;*/
-}
-
 body {
 	width: 100%;
-	height: 100%;
 }
-
-.new-game > a {
-	color: #ffffff;
+.new-game {
+    border-radius: 50%;
+    height: 75px;
+    width: 75px;
 }
-#difficulty {
-	/*display: none;*/
+.startSection {
+	text-align: center;
 }
 .board {
 	margin: 15px;
-
-}
-#scoreboard {
-
 }
 .leftwindow {
 	margin-top: 10px;
 	margin-bottom: 10px;
-	height: 410px;
 	padding: 0px;
 }
 .rightwindow {
 	margin-top: 10px;
 	margin-bottom: 10px;
-	height: 410px;
 	padding: 0px;
 }
 .funfacts {
 	display: none;
 }
-
 .panel-default>.panel-heading {
     text-align: center;
 }
@@ -43,16 +32,38 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 5px;
     margin-bottom: 5px;
 }
-
 #wordstatus { 
 	font-size: 24px;
 	letter-spacing: 8px;
- }
-
+}
  .panel-body {
  	text-align: center;
- }
-
- .button {
+}
+.button {
  	margin-top: 38px;
  }
+ .themeButton, .difficultyButton {
+    color: #fff;
+	text-align: center;
+	min-width: 90px;
+}
+.textHeader {
+    text-align: center;
+}
+a {
+	color: white;
+}
+#usedletters {
+    text-align: center;
+}
+#scoreboard {
+    background-color: black;
+    color: #ffffff;
+    font-size: 32px;
+    width: 60%;
+    margin: auto;
+    margin-top: 50px;
+}
+#numberOfWins, #numberOfLosses {
+	color: #FFD700;
+}

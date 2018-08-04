@@ -164,11 +164,12 @@ function updateBoardImage() {
 function updateScoreboard(gameStatus) {
 	if (gameStatus == "win") {
 		alert("You win!");
+		document.getElementById("numberOfWins").innerHTML = playerWins;
 	} else if (gameStatus == "lose") {
 		alert("You lose!");
+		document.getElementById("numberOfLosses").innerHTML = playerLosses;
 		newGame();
 	}
-	document.getElementById("scoreboard").innerHTML = "<p>Player wins: " + playerWins + "</p><p>Player Losses:" + playerLosses + "</p>";
 }
 
 function printLetters() {
@@ -176,7 +177,7 @@ function printLetters() {
 		if (i == 0) {
 			document.getElementById("usedletters").innerHTML = lettersGuessed[i];	
 		} else {
-		document.getElementById("usedletters").innerHTML += ", " + lettersGuessed[i];
+			document.getElementById("usedletters").innerHTML += ", " + lettersGuessed[i];
 		}
 	}
 }
@@ -191,8 +192,8 @@ function setTheme(themeSelected) {
 		theme = "traditional";
 
 		//Update pills
-		document.getElementById("traditional").className = "active";
-		document.getElementById("dark").className = "";
+		// document.getElementById("traditional").className = "active";
+		// document.getElementById("dark").className = "";
 
 		//change graphic to traditional theme
 		var imageValue = document.getElementById("imagedisplayed").src;
@@ -202,7 +203,7 @@ function setTheme(themeSelected) {
 		document.getElementById("imagedisplayed").src=imageToSet;
 		
 		//Display difficulty options #difficulty
-		document.getElementById('difficulty').style.display = "inline-block";
+		document.getElementById('difficultyGroup').style.display = "block";
 
 
 
@@ -210,8 +211,8 @@ function setTheme(themeSelected) {
 		theme = "traditional";
 
 		//update pills
-		document.getElementById("traditional").className = "active";
-		document.getElementById("dark").className = "";
+		// document.getElementById("traditional").className = "active";
+		// document.getElementById("dark").className = "";
 
 		//change graphic to traditional theme
 		var imageValue = document.getElementById("imagedisplayed").src;
@@ -222,7 +223,7 @@ function setTheme(themeSelected) {
 		document.getElementById("imagedisplayed").src=imageToSet;
 		
 		//Display difficulty options #difficulty
-		document.getElementById('difficulty').style.display = "inline-block";
+		document.getElementById('difficultyGroup').style.display = "block";
 
 	} else if (themeSelected == "theme2") {
 		if (guesses >= 6) {
@@ -232,9 +233,9 @@ function setTheme(themeSelected) {
 
 		theme = "dark";
 		
-		//aupdate pills
-		document.getElementById("traditional").className = "";
-		document.getElementById("dark").className = "active";
+		//Update pills
+		// document.getElementById("traditional").className = "";
+		// document.getElementById("dark").className = "active";
 
 		//change graphic to dark theme
 		var imageValue = document.getElementById("imagedisplayed").src;
@@ -245,7 +246,7 @@ function setTheme(themeSelected) {
 		document.getElementById("imagedisplayed").src=imageToSet;
 
 		//hide difficulty options #difficulty
-		document.getElementById('difficulty').style.display = "none";
+		document.getElementById('difficultyGroup').style.display = "none";
 	}
 	// document.querySelector('#scoreboard').innerHTML = "Player wins: " + playerWins + "<Br><Br>CPU Wins: " +  "<Br><Br>Ties: ";
 }
@@ -260,13 +261,13 @@ function setDifficulty(difficulty) {
 	if (difficulty == "easy") {
 		difficultySetting = "easy";
 		//aupdate pills
-		document.getElementById("easy").className = "active";
-		document.getElementById("hard").className = "";
+		// document.getElementById("easy").className = "active";
+		// document.getElementById("hard").className = "";
 	} else {
 		difficultySetting = "hard";
 		//aupdate pills
-		document.getElementById("easy").className = "";
-		document.getElementById("hard").className = "active";
+		// document.getElementById("easy").className = "";
+		// document.getElementById("hard").className = "active";
 	}
 
 	setTheme("theme1");
