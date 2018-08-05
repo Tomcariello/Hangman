@@ -4,7 +4,9 @@
 		<title>Hangman</title>
 		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="assets/css/styles.css">
+		<script type="text/javascript" src="assets/javascript/dictionary.js"></script>
 		<script type="text/javascript" src="assets/javascript/scripts.js"></script>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
 		<script type="text/javascript">
 			window.onload = initialize;
@@ -15,9 +17,17 @@
 	<div class="container">
 		<div class="row navRow">
 			<div class="col-md-4 startSection">
-				<a href="#" onClick=newGame();>
-					<button type="button" class="btn btn-primary new-game">Start</button>
-				</a>
+				<div class="row">
+					<div class="col-xs-12 textHeader">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12">
+						<a href="#" onClick=newGame();>
+							<button type="button" class="btn btn-primary new-game">New Game</button>
+						</a>
+					</div>
+				</div>				
 			</div>
 
 			<div class="col-md-4">
@@ -30,19 +40,29 @@
 					<div class="col-xs-1"></div>
 					<div class="col-xs-5 themeButton">
 						<a href="#" onClick=setTheme("theme1");>
-							<button type="button" class="themeButton btn btn-primary">Traditional</button>
+							<button type="button" class="themeButton btn btn-primary">
+								<div id="traditional">
+									<i class="fas fa-dot-circle traditionalSelected"></i>
+								</div>
+									Traditional
+							</button>
 						</a>
 					</div>
 					<div class="col-xs-5 themeButton">
 						<a href="#" onClick=setTheme("theme2");>
-							<button type="button" class="themeButton btn btn-primary">Dark</button>
+							<button type="button" class="themeButton btn btn-primary">
+								<div id="dark" class="hideIcon">
+									<i class="fas fa-dot-circle darkSelected"></i>
+								</div>
+								Dark
+							</button>
 						</a>
 						</button>
 					</div>
 					<div class="col-xs-1"></div>
 				</div>
 			</div>
-			<div id="difficultyGroup" class="col-md-4 textHeader">
+			<div id="difficultyGroup" class="col-md-4">
 				<div class="row">
 					<div class="col-xs-12 textHeader">
 						<h3>Select your difficulty</h3>
@@ -52,12 +72,22 @@
 					<div class="col-xs-1"></div>
 					<div class="col-xs-5 themeButton">
 						<a href="#" onClick=setDifficulty("easy")>
-							<button type="button" class="difficultyButton btn btn-primary">Easy</button>
+							<button type="button" class="difficultyButton btn btn-primary">
+								<div id="easy">
+									<i class="fas fa-dot-circle easySelected"></i>
+								</div>
+									Easy
+							</button>
 						</a>
 					</div>
 					<div class="col-xs-5 themeButton">
 						<a href="#" onClick=setDifficulty("hard")>
-							<button type="button" class="difficultyButton btn btn-primary">Hard</button>
+							<button type="button" class="difficultyButton btn btn-primary">
+								<div id="hard" class="hideIcon">
+									<i class="fas fa-dot-circle hardSelected"></i>
+								</div>
+								Hard
+							</button>
 						</a>
 					</div>
 				</div>
@@ -71,7 +101,7 @@
 
 		<div class="row">
 			<div id="usedletters" class="col-xs-12">
-				These are the letters that have been guessed
+				Press a key on your keyboard to guess
 			</div>
 		</div>
 
@@ -92,11 +122,11 @@
 				<div class="row">
 					<div class="col-xs-12">
 						<div class="panel panel-default">
-							<div class="panel-heading"><h3>The word</h3></div>
+							<div class="panel-heading"><h3 id="wordstatus">The word</h3></div>
 								<div class="panel-body">
-									<div id="wordstatus">
+									<!-- <div id="wordstatus">
 										Display underscores indicating word length
-									</div>
+									</div> -->
 									<div id="scoreboard">
 										<div class="row">
 											<div class="col-xs-6">
