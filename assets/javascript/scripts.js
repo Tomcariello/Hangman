@@ -161,17 +161,23 @@ function updateScoreboard(gameStatus) {
 }
 
 function printLetters() {
-	for (i = 0; i < lettersGuessed.length; i++) {
-		if (i == 0) {
-			document.getElementById("usedletters").innerHTML = lettersGuessed[i];	
-		} else {
-			document.getElementById("usedletters").innerHTML += ", " + lettersGuessed[i];
+
+	//Clear the letter area
+	document.getElementById("usedletters").innerHTML = "";
+
+	// Iterate through the alphabet
+	alphabet.forEach(function(letter){
+		//If this letter has been guessed already, print with the proper class
+		if (lettersGuessed.indexOf(letter) > -1) {
+			document.getElementById("usedletters").innerHTML += "<div class='letterUsed'>" + letter + "</div>";
+		} else { //If this letter has not been guessed
+			document.getElementById("usedletters").innerHTML += "<div class='letterNotUsed'>" + letter + "</div>";
 		}
-	}
+	})
 }
 
 function clearLetters() {
-	document.getElementById("usedletters").innerHTML = "These are the letters that have been guessed" ;
+	document.getElementById("usedletters").innerHTML = "Your guessed letters will be tracked here." ;
 }
 
 //Choose between dark and traditional theme
